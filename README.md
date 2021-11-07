@@ -7,7 +7,7 @@ echo source .myshell >> .bashrc && source .bashrc
 ```
 Each time you change the file ".myshell", you should run ```source .bashrc``` in your terminal.
 
-## How to make it
+## What it supports
 
 | Command |                 Detail                  |
 | :-----: | :-------------------------------------: |

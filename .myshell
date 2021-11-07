@@ -7,14 +7,15 @@ jp(){
     jupyter lab --port ${port} --no-browser
 }
 
-# python -m ipykernel install --user --name py38
+# install ipykernel to your conda environment
 ipy(){
     echo -e 'The name of the environment to install ipykernel: \c'
     read Env_name
     if ["${Env_name}" != ""];then
-        conda activate ${Env_name}
-        pip install ipykernel -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
-        python -m ipykernel install --user --name ${Env_name}
+        conda activate ${Env_name};
+        pip install ipykernel -i http://pypi.douban.com/simple --trusted-host pypi.douban.com;
+        python -m ipykernel install --user --name ${Env_name};
+    fi
 }
 # <<< jupyterlab end <<<
 
