@@ -1,14 +1,28 @@
+# >>> jupyterlab >>>
 # open jupyter notebook
 jp(){
-    echo -e 'jupyter notebook starting...'
-    echo -e 'input port: \c'
+    echo -e 'Jupyter notebook starting...'
+    echo -e 'Input port: \c'
     read port
     jupyter lab --port ${port} --no-browser
 }
+
+# python -m ipykernel install --user --name py38
+ipy(){
+    echo -e 'The name of the environment to install ipykernel: \c'
+    read Env_name
+    if ["${Env_name}" != ""];then
+        conda activate ${Env_name}
+        pip install ipykernel -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+        python -m ipykernel install --user --name ${Env_name}
+}
+# <<< jupyterlab end <<<
+
+
 # >>> anaconda >>>
 # conda activate
 env(){
-    echo -e 'environment name: \c'
+    echo -e 'The name of the environment to activate: (Input nothing to deactivate current environment.)\c'
     read Env_name
     if [ "${Env_name}" = "" ]; then
         conda deactivate;
@@ -22,13 +36,13 @@ alias lenv='conda info -e'
 
 # create conda env
 cenv(){
-    echo -e 'create environment name: \c'
+    echo -e 'The name of the environment to create: \c'
     read Env_name
     
     if ["${Env_name}" = ""];then
-        echo -e 'create environment failed';
+        echo -e 'Create environment failed.';
     else
-        echo -e 'python version: \c'
+        echo -e 'Python version: \c'
         read Py_version
         if ["${Py_version}" = ""];then
             conda create --name ${Env_name} python=3.6;
@@ -40,7 +54,7 @@ cenv(){
 
 # delete conda env
 denv(){
-    echo -e 'environment name: \c'
+    echo -e 'The name of the environment to delete: \c'
     read Env_name
     echo -e "Do you want to delete the environment:${Env_name}? ([y]/n)?\c"
     read yon
@@ -55,10 +69,10 @@ denv(){
 # >>> tmux >>>
 # create tmux session 
 ctmux(){
-    echo -e 'tmux session name: \c'
+    echo -e 'The name of the tmux session to create: \c'
     read Tmux_name
     if [ "${Tmux_name}" = "" ]; then
-        echo -e "create tmux session ${Tmux_name} failed"
+        echo -e "Create tmux session ${Tmux_name} failed."
     else
         tmux new -s ${Tmux_name}
     fi
@@ -71,7 +85,7 @@ alias ltmux='tmux ls'
 # attach tmux session 
 atmux(){
     ltmux
-    echo -e '\nWhich tmux session would you want to attach? ( Input nothing for last session,and a new name for a new session. ):\c'
+    echo -e '\nWhich tmux session would you want to attach? ( Input nothing to attach last session,and input a new name to create a new session. ):\c'
     read Tmux_name
     if [ "${Tmux_name}" = "" ]; then
         tmux a
