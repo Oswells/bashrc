@@ -1,0 +1,100 @@
+# open jupyter notebook
+jp(){
+    echo -e 'jupyter notebook starting...'
+    echo -e 'input port: \c'
+    read port
+    jupyter lab --port ${port} --no-browser
+}
+# >>> anaconda >>>
+# conda activate
+env(){
+    echo -e 'environment name: \c'
+    read Env_name
+    if [ "${Env_name}" = "" ]; then
+        conda deactivate;
+    else
+        conda activate ${Env_name};
+    fi
+}
+
+# list conda envs
+alias lenv='conda info -e'
+
+# create conda env
+cenv(){
+    echo -e 'create environment name: \c'
+    read Env_name
+    
+    if ["${Env_name}" = ""];then
+        echo -e 'create environment failed';
+    else
+        echo -e 'python version: \c'
+        read Py_version
+        if ["${Py_version}" = ""];then
+            conda create --name ${Env_name} python=3.6;
+        else
+            conda create --name ${Env_name} python=${Py_version};
+        fi
+    fi
+}
+
+# delete conda env
+denv(){
+    echo -e 'environment name: \c'
+    read Env_name
+    echo -e "Do you want to delete the environment:${Env_name}? ([y]/n)?\c"
+    read yon
+    if [ "${yon}" = "y" ];then
+        conda remove -n ${Env_name} --all;
+    else
+        echo -e "${Env_name} not deleted."
+    fi
+}
+# <<< anaconda end <<<
+
+# >>> tmux >>>
+# create tmux session 
+ctmux(){
+    echo -e 'tmux session name: \c'
+    read Tmux_name
+    if [ "${Tmux_name}" = "" ]; then
+        echo -e "create tmux session ${Tmux_name} failed"
+    else
+        tmux new -s ${Tmux_name}
+    fi
+}
+
+
+# list tmux session 
+alias ltmux='tmux ls'
+
+# attach tmux session 
+atmux(){
+    ltmux
+    echo -e '\nWhich tmux session would you want to attach?(Input nothing for last one.):\c'
+    read Tmux_name
+    if [ "${Tmux_name}" = "" ]; then
+        tmux a
+    else
+        tmux attach -t ${Tmux_name}
+    fi
+}
+
+# kill tmux session
+ktmux(){
+    ltmux
+    echo -e '\nWhich tmux session would you want to kill?:\c'
+    read Tmux_name
+    if [ "${Tmux_name}" = "" ]; then
+        echo -e "kill session failed"
+    else
+        tmux kill-session -t ${Tmux_name}
+    fi
+}
+# <<< tmux end <<<
+
+# gpu listen
+alias gpu='gpustat -i 0.2 -p'
+
+# nvidia-smi
+alias nvidia='nvidia-smi'
