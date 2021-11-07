@@ -71,12 +71,16 @@ alias ltmux='tmux ls'
 # attach tmux session 
 atmux(){
     ltmux
-    echo -e '\nWhich tmux session would you want to attach?(Input nothing for last one.):\c'
+    echo -e '\nWhich tmux session would you want to attach? ( Input nothing for last session,and a new name for a new session. ):\c'
     read Tmux_name
     if [ "${Tmux_name}" = "" ]; then
         tmux a
     else
-        tmux attach -t ${Tmux_name}
+        {
+            tmux attach -t ${Tmux_name}
+        } || {
+            tmux new -s ${Tmux_name}
+        }
     fi
 }
 
