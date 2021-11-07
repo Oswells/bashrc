@@ -1,10 +1,7 @@
 # Make Shell Great Again!
 ## How to make it work
-Download the file ".myshell" to your linux host. Add the following sentence to your ~/.bashrc.
+Download the file ".myshell" to your linux host. 
+Then execute the following commands in your terminal:
 ```shell
-bash .myshell
-```
-Then execute the following command in your terminal:
-```shell
-source ~/.bashrc
+echo bash .myshell >> .bashrc && source .bashrc
 ```
