@@ -1,6 +1,6 @@
-# make shell great again!
+# Make Shell Great Again!
 ## How to make it work
-Download the file ".myshell" to your linux host.Add the follow sentence to your ~/.bashrc.
+Download the file ".myshell" to your linux host. Add the following sentence to your ~/.bashrc.
 ```shell
 bash .myshell
 ```
