@@ -3,9 +3,9 @@
 Download the file ".myshell" to your linux host. 
 Then execute the following commands in your terminal:
 ```shell
-echo source .myshell >> .bashrc && source .bashrc
+echo source ~/.myshell >> ~/.bashrc && source ~/.bashrc
 ```
-Each time you change the file ".myshell", you should run ```source .bashrc``` in your terminal.
+Each time you change the file ".myshell", you should run ```source ~/.bashrc``` in your terminal.
 
 ## What it supports
 

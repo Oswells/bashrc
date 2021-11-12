@@ -11,7 +11,7 @@ jp(){
 ipy(){
     echo -e 'The name of the environment to install ipykernel: \c'
     read Env_name
-    if ["${Env_name}" != ""];then
+    if [ "${Env_name}" != "" ];then
         conda activate ${Env_name};
         pip install ipykernel -i http://pypi.douban.com/simple --trusted-host pypi.douban.com;
         python -m ipykernel install --user --name ${Env_name};
@@ -40,12 +40,12 @@ cenv(){
     echo -e 'The name of the environment to create: \c'
     read Env_name
     
-    if ["${Env_name}" = ""];then
+    if [ "${Env_name}" = "" ];then
         echo -e 'Create environment failed.';
     else
         echo -e 'Python version: \c'
         read Py_version
-        if ["${Py_version}" = ""];then
+        if [ "${Py_version}" = "" ];then
             conda create --name ${Env_name} python=3.6;
         else
             conda create --name ${Env_name} python=${Py_version};
