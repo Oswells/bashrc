@@ -22,4 +22,7 @@ Each time you change the file ".myshell", you should run ```source ~/.bashrc``` 
 |  ktmux  |           kill a tmux session           |
 |   gpu   |      equals to 'gpustat -i 0.2 -p'      |
 | nvidia  |         equals to 'nvidia-smi'          |
+|   pid   |    equals to 'fuser -v /dev/nvidia*'    |
+|   777   |       equals to 'chmod -R 777 .'        |
+| bashrc  |      equals to 'source ~/.bashrc'       |
 

@@ -117,3 +117,10 @@ alias gpu='gpustat -i 0.2 -p'
 
 # nvidia-smi
 alias nvidia='nvidia-smi'
+alias pid='fuser -v /dev/nvidia*'
+
+# chmod
+alias 777='chmod -R 777 .'
+
+alias bashrc='source ~/.bashrc'
+
