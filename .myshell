@@ -1,34 +1,10 @@
-# >>> jupyterlab >>>
-# open jupyter notebook
-jp(){
-    echo -e 'Jupyter notebook starting...'
-    echo -e 'Input port: \c'
-    read port
-    jupyter lab --port ${port} --no-browser
-}
-
-# install ipykernel to your conda environment
-ipy(){
-    echo -e 'The name of the environment to install ipykernel: \c'
-    read Env_name
-    if [ "${Env_name}" != "" ];then
-        conda activate ${Env_name};
-        pip install ipykernel -i http://pypi.douban.com/simple --trusted-host pypi.douban.com;
-        python -m ipykernel install --user --name ${Env_name};
-    fi
-}
-# <<< jupyterlab end <<<
-
-
 # >>> anaconda >>>
 # conda activate
 env(){
-    echo -e 'The name of the environment to activate: (Input nothing to deactivate current environment.)\c'
-    read Env_name
-    if [ "${Env_name}" = "" ]; then
+    if [ "${1}" = "" ]; then
         conda deactivate;
     else
-        conda activate ${Env_name};
+        conda activate ${1};
     fi
 }
 
@@ -46,9 +22,9 @@ cenv(){
         echo -e 'Python version: \c'
         read Py_version
         if [ "${Py_version}" = "" ];then
-            conda create --name ${Env_name} python=3.6;
+            conda create --name ${Env_name} python=3.6 -y;
         else
-            conda create --name ${Env_name} python=${Py_version};
+            conda create --name ${Env_name} python=${Py_version} -y;
         fi
     fi
 }
@@ -60,7 +36,7 @@ denv(){
     echo -e "Do you want to delete the environment:${Env_name}? ([y]/n)?\c"
     read yon
     if [ "${yon}" = "y" ];then
-        conda remove -n ${Env_name} --all;
+        conda remove -n ${Env_name} --all -y;
     else
         echo -e "${Env_name} not deleted."
     fi
@@ -118,9 +94,3 @@ alias gpu='gpustat -i 0.2 -p'
 # nvidia-smi
 alias nvidia='nvidia-smi'
 alias pid='fuser -v /dev/nvidia*'
-
-# chmod
-alias 777='chmod -R 777 .'
-
-alias bashrc='source ~/.bashrc'
-
