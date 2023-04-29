@@ -11,7 +11,6 @@ Each time you change the file ".myshell", you should run ```source ~/.bashrc``` 
 
 | Command |                 Detail                  |
 | :-----: | :-------------------------------------: |
-|   jp    |     open jupyterlab with no browser     |
 |   env   | activate/deactivate a conda environment |
 |  lenv   |    list existing conda environments     |
 |  cenv   |       create a conda environment        |
@@ -23,6 +22,4 @@ Each time you change the file ".myshell", you should run ```source ~/.bashrc``` 
 |   gpu   |      equals to 'gpustat -i 0.2 -p'      |
 | nvidia  |         equals to 'nvidia-smi'          |
 |   pid   |    equals to 'fuser -v /dev/nvidia*'    |
-|   777   |       equals to 'chmod -R 777 .'        |
-| bashrc  |      equals to 'source ~/.bashrc'       |
 
