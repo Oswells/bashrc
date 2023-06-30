@@ -1,4 +1,4 @@
-# Make Shell Great Again!
+# Make Shell Easy!
 ## How to make it work
 Download the file ".myshell" to your linux host. 
 Then execute the following commands in your terminal:
