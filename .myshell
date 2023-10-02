@@ -94,4 +94,4 @@ alias gpu='gpustat -i 0.2 -p'
 # nvidia-smi
 alias nvidia='nvidia-smi'
 alias pid='fuser -v /dev/nvidia*'
-alias kpy='ps -ef | grep python | awk '{print $2}' | xargs kill -9'
+alias kpy="ps -ef | grep python | awk '{print $2}' | xargs kill -9"
