@@ -88,6 +88,16 @@ ktmux(){
 }
 # <<< tmux end <<<
 
+# <<< tensorboard <<<
+tendir(){
+    if [ "${1}" = "" ]; then
+        echo "logdir should not be None!";
+    else
+        tensorboard --logdir=${1};
+    fi
+}
+# <<< tensorboard end <<<
+
 # gpu listen
 alias gpu='gpustat -i 0.2 -p'
 
